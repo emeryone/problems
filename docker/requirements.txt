@@ -1,0 +1,5 @@
+Flask>=2.0.2
+flask_login
+flask_wtf
+sqlalchemy
+sqlalchemy_serializer

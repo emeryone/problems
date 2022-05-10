@@ -18,11 +18,13 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
+db_session.global_init("db/domino.db")
+app.register_blueprint(auth_api.blueprint)
+app.register_blueprint(problems_api.blueprint)
+app.register_blueprint(users_api.blueprint)
+
+
 def main():
-    db_session.global_init("db/domino.db")
-    app.register_blueprint(auth_api.blueprint)
-    app.register_blueprint(problems_api.blueprint)
-    app.register_blueprint(users_api.blueprint)
     app.run()
 
 
