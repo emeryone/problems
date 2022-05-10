@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Рейтинг</h2></div>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Рейтинг</th>
+        </tr>
+    {% for i in range(num) %}
+        <tr>
+            <td>{{users[i].surname}}</td>
+            <td>{{users[i].name}}</td>
+            <td>{{users[i].rating}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

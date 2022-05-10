@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Задачи</h2></div>
+    {% for i in range(num) %}
+        <h3>Задача # {{i + 1}} </h3>
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Класс</th>
+                <th scope="col">Сложность</th>
+                <th scope="col">Условие</th>
+                <th scope="col">Сдать ответ</th>
+            </tr>
+            <tr>
+                <td class="table-info">{{problems[i].level}}</td>
+                <td class="table-info">{{problems[i].difficulty}}</td>
+                <td class="table-info">{{problems[i].text}}</td>
+                <td class="table-info"><a href="/{{problems[i].id}}">Сдать ответ</a></td>
+            </tr>
+        </table>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Сдача ответа</h1>
+    <h3>Задача # {{ problem.id }}</h3>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>Класс: {{problem.level}}</p>
+        <p>Сложность: {{problem.difficulty}}</p>
+        <h5>Условие</h5>
+        <p>{{problem.text}}</p>
+        <p>
+            {{ form.answer.label }}<br>
+            {{ form.answer(class="form-control") }}<br>
+            {% for error in form.answer.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <h5>Комментарий</h5>
+        <p>{{problem.comment}}</p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+    </form>
+{% endblock %}
