@@ -36,6 +36,7 @@
     {% if current_user.is_authenticated %}
         {% if current_user.role > 0 %}
                 <a class="btn btn-primary" href="/add_problem">Добавить задачу</a>
+                <a class="btn btn-primary" href="/add_tournament">Добавить турнир</a>
         {% endif %}
     {% endif %}
     {% block content %}{% endblock %}

@@ -1,6 +1,6 @@
 from flask import Flask, redirect, session
 from flask_login import LoginManager
-from data import db_session, auth_api, problems_api, users_api
+from data import db_session, auth_api, problems_api, users_api, tournament_api
 from data.users import User
 from functools import wraps
 
@@ -22,6 +22,7 @@ db_session.global_init("db/domino.db")
 app.register_blueprint(auth_api.blueprint)
 app.register_blueprint(problems_api.blueprint)
 app.register_blueprint(users_api.blueprint)
+app.register_blueprint(tournament_api.blueprint)
 
 
 def main():
