@@ -22,6 +22,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     rating = sqlalchemy.Column(sqlalchemy.Integer, default=0)
 
     problems = orm.relation("Problems", secondary="users_to_problems", backref="users")
+    tournaments = orm.relation("Tournament", secondary="users_to_tournaments", backref="users")
 
     def set_password(self, password):
         return generate_password_hash(password)

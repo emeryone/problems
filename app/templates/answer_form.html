@@ -1,12 +1,10 @@
-{% extends "base.html" %}
+{% extends "tournament_base.html" %}
 
-{% block content %}
+{% block content2 %}
     <h1>Сдача ответа</h1>
-    <h3>Задача # {{ problem.id }}</h3>
+    <h3>Задача # {{ position }}</h3>
     <form action="" method="post">
         {{ form.hidden_tag() }}
-        <p>Класс: {{problem.level}}</p>
-        <p>Сложность: {{problem.difficulty}}</p>
         <h5>Условие</h5>
         <p>{{problem.text}}</p>
         <p>

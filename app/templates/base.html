@@ -7,14 +7,13 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>{{title}}</title>
 </head>
 <body>
 <header>
-    <h1>Задачник by emery</h1>
-    <h4>Каждому по задаче!</h4>
     <nav class="navbar navbar-light bg-light">
+        <h1>Задачник by emery</h1>
         <a class="navbar-brand" href="#"></a>
         {% if current_user.is_authenticated %}
             <a class="navbar-brand" href="/logout">{{current_user.surname}} {{ current_user.name }}</a>
@@ -29,14 +28,15 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <br>
-    <a class="btn btn-primary " href="/show_problems">Перейти к задачам</a>
-    <a class="btn btn-primary " href="/show_rating">Посмотреть рейтинг</a>
+    <a class="btn btn-primary " href="/all_tournaments">Смотреть список турниров</a>
     <a class="btn btn-primary " href="/help">Правила</a>
-    <br> </br>
     {% if current_user.is_authenticated %}
         {% if current_user.role > 0 %}
-                <a class="btn btn-primary" href="/add_problem">Добавить задачу</a>
-                <a class="btn btn-primary" href="/add_tournament">Добавить турнир</a>
+                <a class="btn btn-success" href="/add_problem">Добавить задачу</a>
+                <a class="btn btn-success" href="/add_tournament">Добавить турнир</a>
+                <a class="btn btn-success" href="/my_tournaments">Мои турниры</a>
+        {% else %}
+                <a class="btn btn-success" href="/student_tournaments">Турниры, в которых я участвую</a>
         {% endif %}
     {% endif %}
     {% block content %}{% endblock %}

@@ -13,7 +13,8 @@ users_to_problems = sqlalchemy.Table(
                       sqlalchemy.ForeignKey('problems.id')),
     sqlalchemy.Column('tournament', sqlalchemy.Integer,
                       sqlalchemy.ForeignKey('tournament.id')),
-    sqlalchemy.Column('result', sqlalchemy.Integer, default=0) #колонка для счета баллов за задачу
+    sqlalchemy.Column('result', sqlalchemy.Integer, default=0),  #колонка для счета баллов за задачу
+    sqlalchemy.Column('tries', sqlalchemy.Integer, default=1)      #колонка для счета попыток
 )
 
 tournament_to_problems = sqlalchemy.Table(
@@ -25,6 +26,7 @@ tournament_to_problems = sqlalchemy.Table(
                       sqlalchemy.ForeignKey('problems.id')),
     sqlalchemy.Column('position', sqlalchemy.String)
 )
+
 
 class Problems(SqlAlchemyBase, SerializerMixin):
     __tablename__ = 'problems'
