@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Информация по задаче # {{ problem.id }}</h1>
+    <form action="" method="post">
+        <p>Класс: {{problem.level}}</p>
+        <p>Сложность: {{problem.difficulty}}</p>
+        <p>Тема: {{problem.theme}}</p>
+        <h5>Условие</h5>
+        <p>{{problem.text}}</p>
+        <h5>Ответ: {{problem.answer}}</h5>
+        <h5>Решение</h5>
+        <p>{{problem.solution}}</p>
+        <h5>Комментарий</h5>
+        <p>{{problem.comment}}</p>
+        {% if tournament.state == 0 and current_user.id == tournament.owner %}
+            <a class="btn btn-primary " href="/add/{{problem.id}}/{{tournament_id}}">Добавить в турнир</a>
+            <a class="btn btn-primary " href="/choose_problems/{{tournament_id}}">Вернуться к добавлению задач</a>
+        {% endif %}
+    </form>
+{% endblock %}

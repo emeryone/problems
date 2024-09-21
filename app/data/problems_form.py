@@ -9,4 +9,7 @@ class ProblemsForm(FlaskForm):
     level = SelectField('Класс', choices=[5, 6, 7, 8, 9, 10, 11])
     answer = StringField('Ответ', validators=[Length(min=1, message='Поле не должно быть пустым')])
     comment = TextAreaField('Комментарий')
+    theme = SelectField('Тема', choices=['Алгебра', 'Геометрия', 'Комбинаторика', 'Теория чисел', 'Задачи на движение',
+                                         'Логика'])
+    solution = TextAreaField('Решение', validators=[Length(min=1, message='Поле не должно быть пустым')])
     submit = SubmitField('Добавить')

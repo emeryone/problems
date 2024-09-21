@@ -45,21 +45,14 @@ def add_problem():
             problem.answer = form.answer.data
             problem.comment = form.comment.data
             problem.owner = current_user.id
+            problem.theme = form.theme.data
+            problem.solution = form.solution.data
             db_sess.add(problem)
             db_sess.commit()
-            return redirect('/show_problems')
+            return redirect('/')
         return render_template('problems_form.html', title='Add problem',
                                form=form)
     return redirect('/deny')
-
-
-@blueprint.route('/show_problems', methods=['GET', 'POST'])
-@login_required
-def show_problems():
-    db_sess = db_session.create_session()
-    problems = db_sess.query(Problems).all()
-    return render_template('show_problems.html', title='Show problems',
-                           problems=problems, num=len(problems))
 
 
 @blueprint.route('/deny')

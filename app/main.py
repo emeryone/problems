@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from data import db_session, auth_api, problems_api, users_api, tournament_api
 from data.users import User
 from functools import wraps
+from apscheduler.schedulers.background import BackgroundScheduler
 
 
 app = Flask(__name__)

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Архив турниров</h2></div>
+    <a class="btn btn-primary" href="/all_tournaments">Открыта регистрация</a>
+    {% if num != 0 %}
+        <p>
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">Класс</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Перейти на страницу турнира</th>
+                </tr>
+                {% for i in range(num) %}
+                <tr>
+                    <td class="table-info">{{tournaments[i].level}}</td>
+                    <td class="table-info">{{tournaments[i].name}}</td>
+                    <td class="table-info"><a href="/tournament_base/{{tournaments[i].id}}">На страницу турнира</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </p>
+    {% endif %}
+{% endblock %}

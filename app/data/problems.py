@@ -39,5 +39,7 @@ class Problems(SqlAlchemyBase, SerializerMixin):
     answer = sqlalchemy.Column(sqlalchemy.String)
     comment = sqlalchemy.Column(sqlalchemy.String, default='')
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+    theme = sqlalchemy.Column(sqlalchemy.String)
+    solution = sqlalchemy.Column(sqlalchemy.String)
 
 

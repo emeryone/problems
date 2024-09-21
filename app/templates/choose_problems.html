@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<br><a class="btn btn-primary " href="/tournament/{{tournament_id}}">Редактировать турнир</a>
+<div id = "headline2"><h2>Задачи</h2></div>
+        <table class="table table-striped table-info">
+            <tr>
+                <th scope="col">id задачи</th>
+                <th scope="col">Класс</th>
+                <th scope="col">Сложность</th>
+                <th scope="col">Условие</th>
+                <th scope="col">Подробнее</th>
+                <th scope="col">Добавить в турнир</th>
+            </tr>
+            {% for i in range(num) %}
+                <tr>
+                    <td>{{problems[i].id}}</td>
+                    <td>{{problems[i].level}}</td>
+                    <td>{{problems[i].difficulty}}</td>
+                    <td>{{problems[i].text}}</td>
+                    <td><a href="/{{problems[i].id}}/{{tournament_id}}">Подробнее</a></td>
+                    <td><a href="/add/{{problems[i].id}}/{{tournament_id}}">Добавить</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

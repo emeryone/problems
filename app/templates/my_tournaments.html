@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Ваши турниры</h2></div>
+    {% if num1 != 0 %}
+        <h4>Редактируемые турниры</h4>
+        <table class="table table-striped table-info">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Класс</th>
+                <th scope="col">Редактировать турнир</th>
+            </tr>
+            {% for i in range(num1) %}
+                <tr>
+                    <td class="table-info">{{tournaments1[i].name}}</td>
+                    <td class="table-info">{{tournaments1[i].level}}</td>
+                    <td class="table-info"><a href="/tournament/{{tournaments1[i].id}}">Редактировать</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% if num2 != 0 %}
+        <h4>Текущие турниры</h4>
+        <table class="table table-striped table-info">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Класс</th>
+                <th scope="col">Перейти на страницу турнира</th>
+            </tr>
+            {% for i in range(num2) %}
+                <tr>
+                    <td class="table-info">{{tournaments2[i].name}}</td>
+                    <td class="table-info">{{tournaments2[i].level}}</td>
+                    <td class="table-info"><a href="/tournament_base/{{tournaments2[i].id}}">На страницу турнира</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% if num3 != 0 %}
+        <h4>Открыта регистрация</h4>
+        <table class="table table-striped table-info">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Класс</th>
+                <th scope="col">Перейти на страницу турнира</th>
+            </tr>
+            {% for i in range(num3) %}
+                <tr>
+                    <td class="table-info">{{tournaments3[i].name}}</td>
+                    <td class="table-info">{{tournaments3[i].level}}</td>
+                    <td class="table-info"><a href="/tournament_base/{{tournaments3[i].id}}">На страницу турнира</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% if num4 != 0 %}
+        <h4>Завершенные турниры</h4>
+        <table class="table table-striped table-info">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Класс</th>
+                <th scope="col">Перейти на страницу турнира</th>
+            </tr>
+            {% for i in range(num4) %}
+                <tr>
+                    <td class="table-info">{{tournaments4[i].name}}</td>
+                    <td class="table-info">{{tournaments4[i].level}}</td>
+                    <td class="table-info"><a href="/tournament_base/{{tournaments4[i].id}}">На страницу турнира</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

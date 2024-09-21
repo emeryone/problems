@@ -1,0 +1,20 @@
+{% extends "tournament_base.html" %}
+
+{% block content2 %}
+<div id = "headline2"><h2></h2></div>
+        <h3>Задача # {{position}} </h3>
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Условие</th>
+                <th scope="col">Комментарий</th>
+                <th scope="col">Сдать ответ</th>
+                <th scope="col">Сбросить задачу</th>
+            </tr>
+            <tr>
+                <td class="table-info">{{problem.text}}</td>
+                <td class="table-info">{{problem.comment}}</td>
+                <td class="table-info"><a href="/answer/{{tournament_id}}/{{problem.id}}">Сдать ответ</a></td>
+                <td class="table-info"><a href="/discard_problem/{{tournament_id}}/{{problem.id}}">Сброс</a></td>
+            </tr>
+        </table>
+{% endblock %}

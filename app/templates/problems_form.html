@@ -32,9 +32,27 @@
             {% endfor %}
         </p>
         <p>
+            {{ form.theme.label }}<br>
+            {{ form.theme(class="form-control") }}<br>
+            {% for error in form.theme.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
             {{ form.answer.label }}<br>
             {{ form.answer(class="form-control") }}<br>
             {% for error in form.answer.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.solution.label }}<br>
+            {{ form.solution(class="form-control") }}<br>
+            {% for error in form.solution.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
                 </div>

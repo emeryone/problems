@@ -1,0 +1,17 @@
+{% extends "tournament_base.html" %}
+
+{% block content2 %}
+<div id = "headline2"><h2>Банк задач</h2></div>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Номер задачи</th>
+            <th scope="col">Взять задачу</th>
+        </tr>
+    {% for i in range(num) %}
+        <tr>
+            <td>{{problems[i][0]}}</td>
+            <td><a href="/get_problem/{{tournament_id}}/{{problems[i][1].id}}">Взять</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

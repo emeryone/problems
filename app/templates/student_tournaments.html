@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Турниры, в которых вы участвуете</h2></div>
+    {% if num1 != 0 %}
+        <h4>Текущие турниры</h4>
+        <p>
+            <table class="table table-striped table-info">
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Класс</th>
+                    <th scope="col">Перейти на страницу турнира</th>
+                </tr>
+                {% for i in range(num1) %}
+                    <tr>
+                        <td>{{tournament_running[i].name}}</td>
+                        <td>{{tournament_running[i].level}}</td>
+                        <td><a href="/tournament_base/{{tournament_running[i].id}}">К участию</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </p>
+    {% endif %}
+    {% if num2 != 0 %}
+        <h4>Открыта регистрация</h4>
+        <p>
+            <table class="table table-striped table-info">
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Класс</th>
+                    <th scope="col">Перейти на страницу турнира</th>
+                    <th scope="col">Отказаться от участия</th>
+                </tr>
+                {% for i in range(num2) %}
+                    <tr>
+                        <td>{{tournament_open[i].name}}</td>
+                        <td>{{tournament_open[i].level}}</td>
+                        <td><a href="/tournament_base/{{tournament_open[i].id}}">
+                            На страницу турнира</a></td>
+                        <td><a href="/delete_user_from_tournament/{{tournament_open[i].id}}/{{current_user.id}}">
+                            Покинуть турнир</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </p>
+    {% endif %}
+    {% if num3 != 0%}
+        <h4>Завершенные турниры</h4>
+        <p>
+            <table class="table table-striped table-info">
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Класс</th>
+                    <th scope="col">Перейти на страницу турнира</th>
+                </tr>
+                {% for i in range(num3) %}
+                    <tr>
+                        <td>{{tournament_archive[i].name}}</td>
+                        <td>{{tournament_archive[i].level}}</td>
+                        <td><a href="/tournament_base/{{tournament_archive[i].id}}">
+                            На страницу турнира</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </p>
+    {% endif %}
+{% endblock %}

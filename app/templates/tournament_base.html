@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p><h2 id = "headline2">{{tournament.name}}</h2></p>
+    <p>
+    {% if tournament.state == 1 %}
+        <h4>Открыта регистрация</h4>
+    {% elif tournament.state == 2 %}
+        <h4>Идет сейчас</h4>
+    {% elif tournament.state == 3 %}
+        <h4>Завершен</h4>
+    {% endif %}
+    <h4>Начало: {{tournament.start_date}}&nbsp;&nbsp;&nbsp;&nbsp;Окончание: {{tournament.end_date}}</h4>
+    </p>
+    <a class="btn btn-primary " href="/tournament_table/{{tournament.id}}">Посмотреть рейтинг</a>
+    {% if tournament.state == 2 %}
+        <a class="btn btn-primary " href="/show_free_problems/{{tournament.id}}">Банк задач</a>
+        <a class="btn btn-primary " href="/show_user_problem/{{tournament.id}}">Текущая задача</a>
+    {% endif %}
+    {% if current_user.role > 0 %}
+        <a class="btn btn-success" href="/tournament/{{tournament.id}}">Посмотреть задачи турнира</a>
+    {% endif %}
+    <p></p>
+    {% block content2 %}{% endblock %}
+{% endblock %}

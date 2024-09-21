@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Открыта регистрация</h2></div>
+    <a class="btn btn-primary" href="/tournaments_archive">Архив</a>
+    {% if num != 0 %}
+        <p>
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">Класс</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Буду участвовать</th>
+                </tr>
+                {% for i in range(num) %}
+                <tr>
+                    <td class="table-info">{{tournaments[i].level}}</td>
+                    <td class="table-info">{{tournaments[i].name}}</td>
+                    <td class="table-info"><a href="/add_user_to_tournament/{{tournaments[i].id}}">Участвовать</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </p>
+    {% endif %}
+{% endblock %}

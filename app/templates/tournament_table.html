@@ -1,0 +1,45 @@
+{% extends "tournament_base.html" %}
+
+{% block content2 %}
+    <table class="table table-bordered">
+        <tr>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            {% for i in range(28) %}
+                {% if (i >= 1 and i < 17) or i == 19 or i == 18 %}
+                    <th scope="col" class="table-primary">{{positions[i]}}</th>
+                {% else %}
+                    <th scope="col" class="table-primary purple-color">{{positions[i]}}</th>
+                {% endif %}
+            {% endfor %}
+            <th scope="col" class="table-success">Сумма</th>
+        </tr>
+    {% for i in range(num) %}
+        <tr>
+            <td>{{tournament_table[i][0].surname}}</td>
+            <td>{{tournament_table[i][0].name}}</td>
+            {% if tournament_table[i][1][0] == 0 %}
+                <td class="table-danger"></td>
+            {% else %}
+                <td>{{tournament_table[i][1][0]}}</td>
+            {% endif %}
+            {% for j in range(27) %}
+                {% if tournament_table[i][j + 2][1] == '' %}
+                    <td></td>
+                {% elif tournament_table[i][j + 2][0] == 0 and tournament_table[i][j + 2][1] == 2 %}
+                    <td class="table-danger"></td>
+                {% elif tournament_table[i][j + 2][0] > 0 and tournament_table[i][j + 2][1] == 2 %}
+                    <td class="table-warning">{{tournament_table[i][j + 2][0]}}</td>
+                {% elif tournament_table[i][j + 2][0] < 0 and tournament_table[i][j + 2][1] == 2 %}
+                    <td class="table-danger">{{tournament_table[i][j + 2][0]}}</td>
+                {% elif tournament_table[i][j + 2][0] == 0 and tournament_table[i][j + 2][1] == 1 %}
+                    <td class="table-warning"></td>
+                {% else %}
+                    <td>{{tournament_table[i][j + 2][0]}}</td>
+                {% endif %}
+            {% endfor %}
+            <td class="table-success">{{tournament_table[i][29]}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
